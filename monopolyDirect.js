@@ -16,8 +16,10 @@
  * @date: Fall, 2024 - updates for Azure PostgreSQL
  */
 
-// Set up the database connection.
+
 const pgp = require('pg-promise')();
+require('dotenv').config();
+
 
 const db = pgp({
   host: process.env.DB_SERVER,
@@ -25,9 +27,11 @@ const db = pgp({
   database: process.env.DB_DATABASE,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  // For SSL, see: https://stackoverflow.com/questions/22301722/ssl-for-postgresql-connection-nodejs
-  ssl: true,
+  ssl: { rejectUnauthorized: false }  // Allow SSL without certificate verification
 });
+
+
+console.log("Connecting to database:", process.env.DB_DATABASE); // Log to confirm the database name
 
 // Send the SQL command directly to Postgres.
 db.many('SELECT * FROM Player')
