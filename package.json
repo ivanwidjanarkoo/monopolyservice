@@ -4,7 +4,7 @@
   "description": "Data service for my own monopoly database",
   "main": "monopolyDirect.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node monopolyService.js"
   },
   "keywords": [],
   "author": "",
