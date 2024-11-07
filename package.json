@@ -4,9 +4,12 @@
   "description": "Data service for my own monopoly database",
   "main": "monopolyDirect.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
 }
