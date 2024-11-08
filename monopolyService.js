@@ -71,14 +71,13 @@ function readHelloMessage(req, res) {
 }
 
 function readPlayers(req, res, next) {
-  res.send('[{"id":1,"email":"me@calvin.edu","name":null},{"id":2,"email":"king@gmail.com","name":"The King"},{"id":3,"email":"dog@gmail.com","name":"Dogbreath"}]')
-  // db.many('SELECT * FROM Player')
-  //   .then((data) => {
-  //     res.send(data);
-  //   })
-  //   .catch((err) => {
-  //     next(err);
-  //   });
+  db.many('SELECT * FROM Player')
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      next(err);
+    });
 }
 
 function readPlayer(req, res, next) {
