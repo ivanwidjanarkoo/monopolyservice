@@ -26,3 +26,11 @@ SELECT score FROM PlayerGame ORDER BY score DESC LIMIT 1;
 
 -- Get the cross-product of all the tables.
 SELECT * FROM Player, PlayerGame, Game;
+
+
+-- Get all the Players and their scores
+SELECT Player.name, playergame.playerid, playergame.score
+FROM Player
+JOIN playergame ON Player.id = playergame.playerid
+JOIN Game ON playergame.gameid = Game.id
+ ORDER BY playergame.score DESC;

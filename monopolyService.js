@@ -95,11 +95,10 @@ function deletePlayer(req, res, next) {
 
 function readPlayersAndGames(req, res, next) {
   db.any(`
-    SELECT Player.id, Player.name, Player.email, Game.game_name
-    FROM Player
-    JOIN PlayerGame ON Player.id = PlayerGame.player_id
-    JOIN Game ON Game.id = PlayerGame.game_id
-  `)
+  SELECT Player.name, playergame.playerid, playergame.score
+  FROM Player
+  JOIN playergame ON Player.id = playergame.playerid
+  JOIN Game ON playergame.gameid = Game.id ORDER BY playergame.score DESC`)
     .then((data) => {
       res.send(data);
     })
